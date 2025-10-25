@@ -1,8 +1,20 @@
-import React from "react";
+import React, { use } from "react";
 import { NavLink } from "react-router";
 import img2 from "../assets/user.png";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Navbar = () => {
+  const{user,logOut}=use(AuthContext)
+
+  const handleLogOut=()=>{
+    logOut()
+    .then(()=>{
+      alert('Log Out Success')
+    })
+    .catch((error)=>{
+      console.log(error)
+    })
+  }
   return (
     <>
       <div className="relative w-11/12 flex items-center justify-between py-3 mx-auto">
@@ -12,11 +24,16 @@ const Navbar = () => {
           <NavLink to={"/career"}>Career</NavLink>
         </div>
         
-        <div className="flex items-center gap-2 ml-auto">
+        <div className="flex items-center gap-4 ml-auto">
           <img src={img2} alt="" className="w-8 h-8 rounded-full" />
-          <NavLink to={"/auth/login"} className="btn bg-gray-500 text-white px-10">
+          {
+            user ?  <NavLink onClick={handleLogOut} className="btn bg-gray-800 px-10">
+            Log out
+          </NavLink>: <NavLink to={"/auth/login"} className="btn bg-gray-400 px-10">
             Login
           </NavLink>
+          }
+         
         </div>
       </div>
     </>
