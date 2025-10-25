@@ -5,6 +5,9 @@ import About from "../Pages/About";
 import Career from "../Pages/Career";
 import Catagory from "../Pages/Catagory";
 import CategoryNews from "../Components/CategoryNews";
+import AuthLayout from "../Layouts/AuthLayout";
+import Login from "../Pages/Login";
+import Register from "../Pages/Register";
 
 export const router= createBrowserRouter([
     {
@@ -27,6 +30,20 @@ export const router= createBrowserRouter([
                 path:'/catagory/:id',
                 element:<CategoryNews/>,
                 loader:()=>fetch('/news.json'),
+            }
+        ]
+    },
+    {
+        path:'/auth',
+        element:<AuthLayout/>,
+        children:[
+            {
+                path:'/auth/login',
+                element:<Login/>,
+            },
+            {
+                path:'/auth/register',
+                element:<Register/>
             }
         ]
     }

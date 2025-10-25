@@ -14,7 +14,7 @@ const Navbar = () => {
         
         <div className="flex items-center gap-2 ml-auto">
           <img src={img2} alt="" className="w-8 h-8 rounded-full" />
-          <NavLink to={"/login"} className="btn btn-primary px-10">
+          <NavLink to={"/auth/login"} className="btn bg-gray-500 text-white px-10">
             Login
           </NavLink>
         </div>
