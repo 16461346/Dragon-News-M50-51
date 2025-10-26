@@ -12,20 +12,21 @@ const Navbar = () => {
       alert('Log Out Success')
     })
     .catch((error)=>{
-      console.log(error)
+      // console.log(error)
     })
   }
   return (
     <>
       <div className="relative w-11/12 flex items-center justify-between py-3 mx-auto">
+      <h2>{user? user.displayName:''}</h2>
         <div className="absolute left-1/2 transform -translate-x-1/2 flex gap-6">
           <NavLink to={"/"}>Home</NavLink>
           <NavLink to={"/about"}>About</NavLink>
           <NavLink to={"/career"}>Career</NavLink>
         </div>
-        
+
         <div className="flex items-center gap-4 ml-auto">
-          <img src={img2} alt="" className="w-8 h-8 rounded-full" />
+          <img src={`${ user ?user.photoURL:img2}`} alt="" className="w-8 h-8 rounded-full" />
           {
             user ?  <NavLink onClick={handleLogOut} className="btn bg-gray-800 px-10">
             Log out

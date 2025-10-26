@@ -18,10 +18,10 @@ const CategoryNews = () => {
       setCategoryNews(Filter);
     } else {
       const Filter = data.filter((news) => news.category_id === ConvertedID);
-      console.log(Filter);
+      // console.log(Filter);
     }
     const Filter = data.filter((news) => news.category_id === ConvertedID);
-    console.log(Filter);
+    // console.log(Filter);
     setCategoryNews(Filter);
   }, [data, ConvertedID]);
   return (

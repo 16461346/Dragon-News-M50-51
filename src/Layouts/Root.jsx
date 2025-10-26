@@ -1,13 +1,15 @@
 import React from "react";
-import { Outlet } from "react-router";
+import { Outlet, useNavigation } from "react-router";
 import Footer from "../Components/Footer";
 import LatestNews from "../Components/LatestNews";
 import Header from "../Components/Header";
 import Navbar from "../Components/Navbar";
 import LeftAsid from "../Components/HomeLayout/LeftAsid";
 import RightAsid from "../Components/HomeLayout/RightAsid";
+import Loadding from "../Components/Loadding";
 
 const Root = () => {
+  const {state}= useNavigation();
   return (
     <div className="flex  flex-col h-screen">
     {/*Header Section */}
@@ -26,7 +28,7 @@ const Root = () => {
         <aside className="col-span-3 sticky top-0 h-fit">
           <LeftAsid/>
           </aside>
-        <section className="col-span-6 mx-4"><Outlet /></section>
+        <section className="col-span-6 mx-4">{state=='loading'?<Loadding/>:<Outlet />} </section>
         <aside className="col-span-3 sticky top-0 h-fit"><RightAsid/></aside>
       </main>
 
